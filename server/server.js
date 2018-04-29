@@ -1,8 +1,10 @@
-import express from 'express';
+import Express from 'express';
 import mongoose from 'mongoose';
 import serverConfig from './config';
+import stubs from './models/stubs';
+import reservations from './models/reservation/reservation.routes';
 
-const app = express();
+const app = new Express();
 const port = process.env.PORT || 5000;
 
 mongoose.Promise = global.Promise;
@@ -12,10 +14,10 @@ mongoose.connect(serverConfig.mongoURL, (error) => {
     console.error('Please make sure Mongodb is installed and running!');
     throw error;
   }
+
+  stubs.generateReservations();
 });
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
+app.use('/api', reservations);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
