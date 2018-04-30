@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema({
+const reservationSchema = new Schema({
   organizer: { type: 'String', required: true },
   description: { type: 'String', required: true },
   room: { type: 'String', required: true },
@@ -10,4 +10,4 @@ const postSchema = new Schema({
   dateAdded: { type: 'Date', default: Date.now, required: true },
 });
 
-export default mongoose.model('Reservation', postSchema);
+export default mongoose.model('Reservation', reservationSchema);
