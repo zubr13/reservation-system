@@ -4,11 +4,11 @@ import "./reservation.css";
 class Reservation extends React.Component {
   render() {
     return (
-      <div class="featured">
-        <div class="container">
-          <div class="title">
+      <div className="featured">
+        <div className="container">
+          <div className="title">
             <h2>Форма для резерування</h2>
-            <span class="byline">
+            <span className="byline">
               Donec leo, vivamus fermentum nibh in augue praesent a lacus at
               urna congue
             </span>
@@ -29,9 +29,9 @@ class Reservation extends React.Component {
             fun :){" "}
           </p>
         </div>
-        <ul class="actions">
+        <ul className="actions">
           <li>
-            <a class="button">Etiam posuere</a>
+            <a className="button">Etiam posuere</a>
           </li>
         </ul>
       </div>

@@ -1,30 +1,31 @@
 import React from "react";
 import "./header.css";
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
   render() {
     return (
-      <div class="header container">
-        <div class="logo">
+      <div className="header container">
+        <div className="logo">
           <h1>
             <a>
-              <i class="fas fa-graduation-cap fa-lg" />
+              <i className="fas fa-graduation-cap fa-lg" />
             </a>
           </h1>
         </div>
-        <div class="menu">
+        <div className="menu">
           <ul>
-            <li class="current_page_item">
-              <a>Головна</a>
+            <li className="current_page_item">
+              <Link to="/">Головна</Link>
             </li>
             <li>
-              <a>Мої бронювання</a>
+              <Link to="/reservations">Мої бронювання</Link>
             </li>
             <li>
-              <a>Університети</a>
+              <Link to="/universities">Університети</Link>
             </li>
             <li>
-              <a>Контакти</a>
+              <Link to="/contacts">Контакти</Link>
             </li>
           </ul>
         </div>

@@ -4,10 +4,10 @@ import "./universities.css";
 class Universities extends React.Component {
   render() {
     return (
-      <div class="page container">
-        <div class="title">
+      <div className="page container">
+        <div className="title">
           <h2>Список університетів</h2>
-          <span class="byline">
+          <span className="byline">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit
           </span>
         </div>
@@ -21,9 +21,9 @@ class Universities extends React.Component {
           suscipit, justo nulla blandit libero, in blandit augue justo quis
           nisl. Fusce mattis viverra elit. Fusce quis tortor.
         </p>
-        <ul class="actions">
+        <ul className="actions">
           <li>
-            <a class="button">Etiam posuere</a>
+            <a className="button">Etiam posuere</a>
           </li>
         </ul>
       </div>
