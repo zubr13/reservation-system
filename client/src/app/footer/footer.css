@@ -1,0 +1,12 @@
+.footer {
+  overflow: hidden;
+  padding: 2em 0em;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.footer p {
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.8);
+}

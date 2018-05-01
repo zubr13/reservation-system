@@ -1,0 +1,10 @@
+.page {
+  padding: 5em 0em;
+  text-align: center;
+}
+
+.page .button {
+  margin-top: 2em;
+  display: inline-block;
+  text-align: center;
+}

@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import "./app.css";
+import Header from "./header/header";
+import Footer from "./footer/footer";
+import Main from "./main/main";
+import Universities from "./universities/universities";
+import Reservation from "./reservation/reservation";
 
 class App extends Component {
   state = {
@@ -24,12 +28,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">{this.state.response}</p>
+      <div>
+        <Header />
+        <Main />
+        <Universities />
+        <Reservation />
+        <Footer />
       </div>
     );
   }

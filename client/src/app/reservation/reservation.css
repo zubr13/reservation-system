@@ -1,0 +1,29 @@
+.featured {
+  overflow: hidden;
+  padding: 5em 0em;
+  background: #27ae61;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.featured a {
+  color: rgba(255, 255, 255, 1);
+}
+
+.featured .button {
+  background: #fff;
+  margin-top: 3em;
+  font-size: 1em;
+  color: #27ae61;
+}
+
+.featured .title {
+}
+
+.featured .title h2 {
+  color: #fff;
+}
+
+.featured .title .byline {
+  color: rgba(255, 255, 255, 0.6);
+}

@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 1em;
+}
+
+.logo {
+  padding: 0.8em;
+}
+
+.logo h1 {
+  color: #2b3f48;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #2b3f48;
+}
+
+.menu {
+  margin-left: auto;
+}
+
+.menu ul {
+  display: inline-block;
+}
+
+.menu li {
+  display: block;
+  float: left;
+  text-align: center;
+}
+
+.menu li a,
+.menu li span {
+  padding: 1em 0.8em;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: #2b3f48;
+}
+
+.menu li:hover a,
+.menu li.active a,
+.menu li.active span {
+  color: #2b3f48;
+}
+
+.menu .current_page_item a {
+  color: #27ae61;
+}
