@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import "./app.css";
 import Header from "./header/header";
 import Footer from "./footer/footer";
@@ -31,11 +31,12 @@ class App extends Component {
     return (
       <Router>
         <div>
-        <Header />
-        <Route exact path="/" component={Main} />
-        <Route path="/reservations" component={Reservation} />
-        <Route path="/universities" component={Universities} />
-        <Footer/>
+          <Header />
+          <Redirect from="/" to="/main" />
+          <Route path="/main" component={Main} />
+          <Route path="/reservations" component={Reservation} />
+          <Route path="/universities" component={Universities} />
+          <Footer/>
         </div>
       </Router>
     );

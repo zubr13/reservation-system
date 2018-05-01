@@ -1,6 +1,6 @@
 import React from "react";
 import "./header.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class Header extends React.Component {
   render() {
@@ -15,17 +15,17 @@ class Header extends React.Component {
         </div>
         <div className="menu">
           <ul>
-            <li className="current_page_item">
-              <Link to="/">Головна</Link>
+            <li>
+              <NavLink to="/main" activeClassName="active">Головна</NavLink>
             </li>
             <li>
-              <Link to="/reservations">Мої бронювання</Link>
+              <NavLink to="/reservations" activeClassName="active">Мої бронювання</NavLink>
             </li>
             <li>
-              <Link to="/universities">Університети</Link>
+              <NavLink to="/universities" activeClassName="active">Університети</NavLink>
             </li>
             <li>
-              <Link to="/contacts">Контакти</Link>
+              <NavLink to="/contacts" activeClassName="active">Контакти</NavLink>
             </li>
           </ul>
         </div>
