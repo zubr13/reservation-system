@@ -4,11 +4,11 @@
   "scripts": {
     "client": "cd client && npm run start",
     "server": "cd server && nodemon register.js",
-    "start":
-      "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.17.3"
   }
 }
