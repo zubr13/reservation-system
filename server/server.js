@@ -8,6 +8,7 @@ import universities from "./models/universities/universities.routes";
 import lections from "./models/lections/lections.routes";
 import compression from "compression";
 import bodyParser from "body-parser";
+import path from "path";
 
 const app = new Express();
 const port = process.env.PORT || 5000;
@@ -36,7 +37,7 @@ app.use("/api", reservations);
 app.use("/api", users);
 
 app.get("/", function(req, res) {
-  res.sendFile("client/build/index.html");
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
