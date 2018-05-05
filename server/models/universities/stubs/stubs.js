@@ -4,10 +4,13 @@ import { rooms } from "./kpi-rooms";
 
 function groupRoomsByBuildings() {
   rooms.forEach(room => {
-    const building = buildings.find(building => building.name == room.building);
+    const building = buildings.find(building =>
+      room["full_name"].includes("-" + building.name)
+    );
     if (!building) {
       return;
     }
+    room.building = building.name;
     if (!building.rooms) {
       building.rooms = [];
     } else {
