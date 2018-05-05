@@ -34,6 +34,16 @@ ul {
   list-style: none;
 }
 
+dl,
+dt,
+dd {
+  margin: 0;
+}
+
+dt {
+  margin-right: 5px;
+}
+
 ul.actions {
   text-align: center;
 }
@@ -149,29 +159,13 @@ ul.contact li a:before {
   color: #ffffff;
 }
 
-ul.contact li a.icon-twitter:before {
-  background: #2daae4;
-}
-ul.contact li a.icon-facebook:before {
-  background: #39599f;
-}
-ul.contact li a.icon-dribbble:before {
-  background: #c4376b;
-}
-ul.contact li a.icon-tumblr:before {
-  background: #31516a;
-}
-ul.contact li a.icon-rss:before {
-  background: #f2600b;
-}
-
 .button {
   display: inline-block;
-  padding: 0em 3em;
+  padding: 0em 1em;
   background: #27ae61;
   border-radius: 8px;
   letter-spacing: 0.2em;
-  line-height: 4em;
+  line-height: 3em;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 400;

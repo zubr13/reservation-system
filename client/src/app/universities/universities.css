@@ -8,3 +8,15 @@
   display: inline-block;
   text-align: center;
 }
+
+.universities-list dt,
+.universities-list dd {
+  display: inline-block;
+}
+
+.universities-list li {
+  padding: 2em 2em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 10px;
+}

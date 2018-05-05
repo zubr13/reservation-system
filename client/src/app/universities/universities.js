@@ -17,20 +17,32 @@ class Universities extends React.Component {
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit
           </span>
         </div>
-        <p>
-          {" "}
-          Vivamus fermentum nibh in augue. Praesent a lacus at urna congue
-          rutrum. Nulla enim eros nibh. Duis enim nulla, luctus eu, dapibus
-          lacinia, venenatis id, quam. Vestibulum imperdiet, magna nec eleifend
-          rutrum, nunc lectus vestibulum velit, euismod lacinia quam nisl id
-          lorem. Quisque erat. Vestibulum pellentesque, justo mollis pretium
-          suscipit, justo nulla blandit libero, in blandit augue justo quis
-          nisl. Fusce mattis viverra elit. Fusce quis tortor.
-        </p>
-        <ul className="actions">
-          <li>
-            <a className="button">Etiam posuere</a>
-          </li>
+        <ul className="universities-list">
+          {this.props.universities.map(university => {
+            return (
+              <li>
+                <h3>{university.title}</h3>
+                <p>{university.description}</p>
+                <dl>
+                  <dt>Місто: </dt>
+                  <dd>{university.city}</dd>
+                  <br />
+                  <dt>Адреса: </dt>
+                  <dd>{university.address}</dd>
+                  <br />
+                  <dt>Сайт: </dt>
+                  <dd>{university.website}</dd>
+                  <br />
+                  <dt>Телефон: </dt>
+                  <dd>{university.telephone}</dd>
+                  <br />
+                  <dt>Пошта: </dt>
+                  <dd>{university.email}</dd>
+                </dl>
+                <a className="button">Переглянути</a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     );
