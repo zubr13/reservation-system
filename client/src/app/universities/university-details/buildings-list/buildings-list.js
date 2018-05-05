@@ -25,7 +25,9 @@ class BuildingsList extends React.Component {
                   <p>Корпус номер {building.name}</p>
                   <Link
                     to={{
-                      pathname: `/buildings/${building._id}`,
+                      pathname: `${window.location.pathname}/buildings/${
+                        building._id
+                      }`,
                       state: { building }
                     }}
                   >

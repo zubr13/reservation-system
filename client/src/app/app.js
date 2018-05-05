@@ -29,7 +29,10 @@ class App extends Component {
             <Route path="/main" component={Main} />
             <Route path="/reservations" component={Reservation} />
             <Route path="/contacts" component={Contacts} />
-            <Route path={"/buildings/:id"} component={BuildingDetails} />
+            <Route
+              path={"/universities/:id/buildings/:id"}
+              component={BuildingDetails}
+            />
             <Route path={"/universities/:id"} component={UniversityDetails} />
             <Route path="/universities" component={Universities} />
             <Redirect to="/main" />
