@@ -8,24 +8,32 @@ class Header extends React.Component {
       <div className="header container">
         <div className="logo">
           <h1>
-            <a>
+            <NavLink to="/main" activeClassName="active">
               <i className="fas fa-graduation-cap fa-lg" />
-            </a>
+            </NavLink>
           </h1>
         </div>
         <div className="menu">
           <ul>
             <li>
-              <NavLink to="/main" activeClassName="active">Головна</NavLink>
+              <NavLink to="/main" activeClassName="active">
+                Головна
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/reservations" activeClassName="active">Мої бронювання</NavLink>
+              <NavLink to="/reservations" activeClassName="active">
+                Мої бронювання
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/universities" activeClassName="active">Університети</NavLink>
+              <NavLink to="/universities" activeClassName="active">
+                Університети
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/contacts" activeClassName="active">Контакти</NavLink>
+              <NavLink to="/contacts" activeClassName="active">
+                Контакти
+              </NavLink>
             </li>
           </ul>
         </div>

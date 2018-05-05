@@ -259,13 +259,18 @@ ul.contact li a:before {
   border-radius: 8px;
 }
 
-input[type="text"] {
+input,
+textarea {
   border: 3px solid #eeeeee;
   padding: 12px;
   font-family: "Play", sans-serif;
   font-size: 15px;
   background: #fff;
   margin: 0 0 10px 0;
+}
+
+.input-container {
+  width: 100%;
 }
 
 #root {
