@@ -3,10 +3,13 @@ const Schema = mongoose.Schema;
 
 const reservationSchema = new Schema({
   organizer: { type: "String", required: true },
-  description: { type: "String", required: true },
+  university: { type: "String", required: true },
+  building: { type: "String", required: true },
   room: { type: "String", required: true },
-  time: { type: "Date", required: true },
-  duration: { type: "String", required: true },
+  description: { type: "String", required: true },
+  startTime: { type: "Date", required: true },
+  endTime: { type: "Date", required: true },
+  status: { type: "String" },
   dateAdded: { type: "Date", default: Date.now, required: true }
 });
 

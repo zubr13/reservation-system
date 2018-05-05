@@ -1,7 +1,22 @@
 import React from "react";
 import "./create-reservation.css";
+import { postReservation } from "../reservation.actions";
+import { connect } from "react-redux";
 
 class CreateReservation extends React.Component {
+  constructor(props) {
+    super(props);
+    this.reservation = {};
+  }
+
+  onSubmit = () => {
+    this.props.onSubmit(this.reservation);
+  };
+
+  onChange = (propName, event) => {
+    this.reservation[propName] = event.target.value;
+  };
+
   render() {
     return (
       <div className="featured create-reservation">
@@ -16,37 +31,54 @@ class CreateReservation extends React.Component {
           <form>
             <div className="input-container">
               <label>ПІБ організатора</label>
-              <input type="text" />
+              <input
+                type="text"
+                onChange={this.onChange.bind(this, "organizer")}
+              />
             </div>
             <div className="input-container">
               <label>Університет</label>
-              <input type="text" />
+              <input
+                type="text"
+                onChange={this.onChange.bind(this, "university")}
+              />
             </div>
             <div className="input-container">
               <label>Корпус</label>
-              <input type="text" />
+              <input
+                type="text"
+                onChange={this.onChange.bind(this, "building")}
+              />
             </div>
             <div className="input-container">
               <label>Аудиторія</label>
-              <input type="text" />
+              <input type="text" onChange={this.onChange.bind(this, "room")} />
             </div>
             <div className="input-container">
               <label>Час початку</label>
-              <input type="time" />
+              <input
+                type="datetime-local"
+                onChange={this.onChange.bind(this, "startTime")}
+              />
             </div>
             <div className="input-container">
               <label>Час закінченя</label>
-              <input type="time" />
+              <input
+                type="datetime-local"
+                onChange={this.onChange.bind(this, "endTime")}
+              />
             </div>
             <div className="input-container">
               <label>Опис</label>
-              <textarea />
+              <textarea onChange={this.onChange.bind(this, "description")} />
             </div>
           </form>
         </div>
         <ul className="actions">
           <li>
-            <a className="button">Надіслати</a>
+            <a className="button" onClick={this.onSubmit}>
+              Надіслати
+            </a>
           </li>
         </ul>
       </div>
@@ -54,4 +86,12 @@ class CreateReservation extends React.Component {
   }
 }
 
-export default CreateReservation;
+function mapDispatchToProps(dispatch) {
+  return {
+    onSubmit: reservation => {
+      dispatch(postReservation(reservation));
+    }
+  };
+}
+
+export default connect(() => ({}), mapDispatchToProps)(CreateReservation);

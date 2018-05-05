@@ -1,32 +1,40 @@
-import Reservation from './reservation.model';
+import Reservation from "./reservation.model";
 
-export function generateReservations () {
-    Reservation.count().exec((err, count) => {
-        if (count > 0) {
-          return;
-        }
-    
-        const reservation1 = new Reservation({ 
-            organizer: 'Andrii Zubrytskyi',
-            description: 'Meetup about open source',
-            room: '202-18',
-            time: new Date(),
-            duration: '3 hours',
-        });
-        const reservation2 = new Reservation({ 
-            organizer: 'Vitalii Klichko',
-            description: 'Lection about smart city',
-            room: '202-18',
-            time: new Date(),
-            duration: '3 hours',
-        });
+export function generateReservations() {
+  Reservation.count().exec((err, count) => {
+    if (count > 0) {
+      return;
+    }
 
-        Reservation.create([reservation1, reservation2], (error) => {
-          if (error) {
-            console.log(error);
-          } else {
-              console.log('Reservations are generated')
-          }
-        });
-      });
+    const reservation1 = new Reservation({
+      organizer: "Andrii Zubrytskyi",
+      university:
+        "Національний технічний університет України 'Київський політехнічний інститут",
+      building: "1",
+      description: "Meetup about open source",
+      room: "202-18",
+      startTime: new Date(),
+      endTime: new Date(),
+      status: "Очікує підтверждення"
+    });
+    const reservation2 = new Reservation({
+      organizer: "Vitalii Klichko",
+      university:
+        "Національний технічний університет України 'Київський політехнічний інститут",
+      building: "1",
+      description: "Lection about smart city",
+      room: "202-18",
+      startTime: new Date(),
+      endTime: new Date(),
+      status: "Підтверджено"
+    });
+
+    Reservation.create([reservation1, reservation2], error => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Reservations are generated");
+      }
+    });
+  });
 }

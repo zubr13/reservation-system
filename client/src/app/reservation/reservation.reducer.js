@@ -1,4 +1,4 @@
-import { ADD_RESERVATIONS } from "./reservation.actions";
+import { ADD_RESERVATIONS, ADD_RESERVATION } from "./reservation.actions";
 
 const initialState = { data: [] };
 
@@ -7,6 +7,10 @@ const ReservationReducer = (state = initialState, action) => {
     case ADD_RESERVATIONS:
       return {
         data: action.reservations
+      };
+    case ADD_RESERVATION:
+      return {
+        data: action.reservation
       };
     default:
       return state;

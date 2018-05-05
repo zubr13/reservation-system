@@ -15,6 +15,10 @@ const port = process.env.PORT || 5000;
 
 mongoose.Promise = global.Promise;
 
+process.once("SIGUSR2", function() {
+  process.kill(process.pid, "SIGUSR2");
+});
+
 mongoose.connect(serverConfig.mongoURL, error => {
   if (error) {
     console.error("Please make sure Mongodb is installed and running!");
