@@ -1,5 +1,6 @@
 import React from "react";
 import "./university-details.css";
+import BuildingsList from "./buildings-list/buildings-list";
 
 class UniversityDetails extends React.Component {
   render() {
@@ -26,6 +27,7 @@ class UniversityDetails extends React.Component {
             <dd>{university.email}</dd>
           </dl>
         </div>
+        <BuildingsList buildings={university.buildings} />
       </div>
     );
   }

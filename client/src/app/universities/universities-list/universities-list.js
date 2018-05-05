@@ -29,7 +29,7 @@ class UniversitiesList extends React.Component {
               </dl>
               <Link
                 to={{
-                  pathname: `/universities/${university._id}/details`,
+                  pathname: `/universities/${university._id}`,
                   state: { university }
                 }}
               >
