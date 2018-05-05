@@ -22,6 +22,7 @@ mongoose.connect(serverConfig.mongoURL, error => {
   }
 
   stubs.generateReservations();
+  stubs.generateUniversities();
 });
 
 if (process.env.NODE_ENV === "production") {

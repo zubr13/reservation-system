@@ -1,12 +1,12 @@
-import Reservation from "./reservation.model";
+import University from "./universities.model";
 
 export function generateUniversities() {
-  Reservation.count().exec((err, count) => {
+  University.count().exec((err, count) => {
     if (count > 0) {
       return;
     }
 
-    const university1 = new Reservation({
+    const university1 = new University({
       title:
         "Національний технічний університет України 'Київський політехнічний інститут' ",
       description:
@@ -18,7 +18,7 @@ export function generateUniversities() {
       city: "Київ",
       buildings: []
     });
-    const university2 = new Reservation({
+    const university2 = new University({
       title: "Київський національний університет імені Тараса Шевченка",
       description:
         "Класичний університет дослідного зразка, провідний сучасний науково-навчальний центр України",
@@ -29,7 +29,7 @@ export function generateUniversities() {
       city: "Київ",
       buildings: []
     });
-    const university3 = new Reservation({
+    const university3 = new University({
       title:
         "Київський національний економічний університет ім. Вадима Гетьмана ",
       description:
@@ -41,7 +41,7 @@ export function generateUniversities() {
       city: "Київ",
       buildings: []
     });
-    const university4 = new Reservation({
+    const university4 = new University({
       title: "Національний університет «Києво-Могилянська академія»",
       description:
         "Заснований 1615 року. Розміщується в корпусах історичної Києво-Могилянської академії. НаУКМА позиціонує себе як проукраїнський, національно та політично свідомий вищий навчальний заклад.",
@@ -53,13 +53,13 @@ export function generateUniversities() {
       buildings: []
     });
 
-    Reservation.create(
+    University.create(
       [university1, university2, university3, university4],
       error => {
         if (error) {
           console.log(error);
         } else {
-          console.log("Reservations are generated");
+          console.log("Universitys are generated");
         }
       }
     );

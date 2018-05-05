@@ -1,7 +1,13 @@
 import React from "react";
 import "./universities.css";
+import { connect } from "react-redux";
+import { fetchUniversities } from "./universities.actions";
+import { getUniversities } from "./universities.reducer";
 
 class Universities extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(fetchUniversities);
+  }
   render() {
     return (
       <div className="page container">
@@ -31,4 +37,10 @@ class Universities extends React.Component {
   }
 }
 
-export default Universities;
+function mapStateToProps(state) {
+  return {
+    universities: getUniversities(state)
+  };
+}
+
+export default connect(mapStateToProps)(Universities);
