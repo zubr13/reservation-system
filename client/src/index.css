@@ -276,3 +276,8 @@ textarea {
 #root {
   padding-top: 85px;
 }
+
+dt,
+dd {
+  display: inline-block;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./universities-list.css";
 
 class UniversitiesList extends React.Component {
@@ -7,7 +8,7 @@ class UniversitiesList extends React.Component {
       <ul className="universities-list">
         {this.props.universities.map(university => {
           return (
-            <li>
+            <li key={university._id}>
               <h3>{university.title}</h3>
               <p>{university.description}</p>
               <dl>
@@ -26,7 +27,14 @@ class UniversitiesList extends React.Component {
                 <dt>Пошта: </dt>
                 <dd>{university.email}</dd>
               </dl>
-              <a className="button">Переглянути</a>
+              <Link
+                to={{
+                  pathname: `/universities/${university._id}/details`,
+                  state: { university }
+                }}
+              >
+                <div className="button">Переглянути</div>
+              </Link>
             </li>
           );
         })}
