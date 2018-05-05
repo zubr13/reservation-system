@@ -1,10 +1,28 @@
-import University from "./universities.model";
+import University from "../universities.model";
+import { buildings } from "./kpi-buildings";
+import { rooms } from "./kpi-rooms";
+
+function groupRoomsByBuildings() {
+  rooms.forEach(room => {
+    const building = buildings.find(building => building.name == room.building);
+    if (!building) {
+      return;
+    }
+    if (!building.rooms) {
+      building.rooms = [];
+    } else {
+      building.rooms.push(room);
+    }
+  });
+}
 
 export function generateUniversities() {
   University.count().exec((err, count) => {
     if (count > 0) {
       return;
     }
+
+    groupRoomsByBuildings();
 
     const university1 = new University({
       title:
@@ -16,7 +34,7 @@ export function generateUniversities() {
       website: "http://kpi.ua",
       email: "pk@kpi.ua",
       city: "Київ",
-      buildings: []
+      buildings
     });
     const university2 = new University({
       title: "Київський національний університет імені Тараса Шевченка",

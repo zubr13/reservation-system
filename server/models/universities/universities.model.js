@@ -11,11 +11,17 @@ const universitySchema = new Schema({
   city: { type: "String", required: true },
   buildings: [
     {
-      number: { type: "String", required: true },
-      address: { type: "String", required: true },
+      id: { type: "String" },
+      name: { type: "String", required: true },
+      latitude: { type: "Number", required: true },
+      longitude: { type: "Number", required: true },
       rooms: [
         {
-          number: { type: "String" }
+          id: { type: "String" },
+          name: { type: "String" },
+          full_name: { type: "String" },
+          kpimaps_id: { type: "String" },
+          building: { type: "Number", required: true }
         }
       ]
     }
