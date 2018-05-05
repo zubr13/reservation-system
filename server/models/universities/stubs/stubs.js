@@ -1,11 +1,12 @@
 import University from "../universities.model";
 import { buildings } from "./kpi-buildings";
 import { rooms } from "./kpi-rooms";
+import _ from "lodash";
 
 function groupRoomsByBuildings() {
   rooms.forEach(room => {
     const building = buildings.find(building =>
-      room["full_name"].includes("-" + building.name)
+      _.endsWith(room["full_name"], "-" + building.name)
     );
     if (!building) {
       return;
@@ -20,6 +21,9 @@ function groupRoomsByBuildings() {
 }
 
 export function generateUniversities() {
+  University.remove(() => {
+    console.log("Removed");
+  });
   University.count().exec((err, count) => {
     if (count > 0) {
       return;

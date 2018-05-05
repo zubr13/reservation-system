@@ -2807,13 +2807,6 @@ export const rooms = [
     "building": 6
 },
 {
-    "id": 402,
-    "name": "",
-    "full_name": "-18",
-    "kpimaps_id": null,
-    "building": 6
-},
-{
     "id": 403,
     "name": "204",
     "full_name": "204-18",
