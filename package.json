@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "client": "cd client && npm run start",
-    "server": "cd server && npm install && nodemon register.js",
-    "start": "npm run server"
+    "server": "cd server && nodemon register.js",
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
