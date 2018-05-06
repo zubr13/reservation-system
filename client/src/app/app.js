@@ -14,6 +14,7 @@ import UniversityDetails from "./universities/university-details/university-deta
 import BuildingDetails from "./universities/university-details/building-details/building-details";
 import Reservation from "./reservation/reservation";
 import Contacts from "./contacts/contacts";
+import CreateReservation from "./reservation/create-reservation/create-reservation";
 
 class App extends Component {
   state = {
@@ -27,14 +28,15 @@ class App extends Component {
           <Header />
           <Switch>
             <Route path="/main" component={Main} />
-            <Route path="/reservations" component={Reservation} />
-            <Route path="/contacts" component={Contacts} />
+            <Route path="/reservation/create" component={CreateReservation} />
             <Route
               path={"/universities/:id/buildings/:id"}
               component={BuildingDetails}
             />
             <Route path={"/universities/:id"} component={UniversityDetails} />
             <Route path="/universities" component={Universities} />
+            <Route path="/reservations" component={Reservation} />
+            <Route path="/contacts" component={Contacts} />
             <Redirect to="/main" />
           </Switch>
           <Footer />

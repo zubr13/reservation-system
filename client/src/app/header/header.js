@@ -21,13 +21,18 @@ class Header extends React.Component {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/reservations" activeClassName="active">
-                Мої бронювання
+              <NavLink to="/reservation/create" activeClassName="active">
+                Забронювати
               </NavLink>
             </li>
             <li>
               <NavLink to="/universities" activeClassName="active">
                 Університети
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/reservations" activeClassName="active">
+                Мої бронювання
               </NavLink>
             </li>
             <li>

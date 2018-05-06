@@ -21,9 +21,6 @@ function groupRoomsByBuildings() {
 }
 
 export function generateUniversities() {
-  University.remove(() => {
-    console.log("Removed");
-  });
   University.count().exec((err, count) => {
     if (count > 0) {
       return;

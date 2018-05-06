@@ -1,6 +1,7 @@
 import React from "react";
 import "./room-list.css";
 import _ from "lodash";
+import { Link } from "react-router-dom";
 
 class RoomList extends React.Component {
   render() {
@@ -16,7 +17,14 @@ class RoomList extends React.Component {
                   <br />
                   Повне ім'я: {room["full_name"]}
                 </div>
-                <div className="button">Забронювати</div>
+                <Link
+                  to={{
+                    pathname: `/reservation/create`,
+                    state: { room, pathname: window.location.pathname }
+                  }}
+                >
+                  <div className="button">Забронювати</div>
+                </Link>
               </li>
             );
           })

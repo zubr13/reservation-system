@@ -6,6 +6,6 @@
   margin: 10px;
 }
 
-.rooms-list .button {
+.rooms-list li > a {
   margin-left: auto;
 }
