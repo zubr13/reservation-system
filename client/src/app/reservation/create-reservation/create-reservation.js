@@ -3,6 +3,7 @@ import "./create-reservation.css";
 import { postReservation } from "../reservation.actions";
 import { connect } from "react-redux";
 import _ from "lodash";
+import { Link } from "react-router-dom";
 
 class CreateReservation extends React.Component {
   constructor(props) {
@@ -107,9 +108,11 @@ class CreateReservation extends React.Component {
         </div>
         <ul className="actions">
           <li>
-            <a className="button" onClick={this.onSubmit}>
-              Надіслати
-            </a>
+            <Link to="/reservations">
+              <a className="button" onClick={this.onSubmit}>
+                Надіслати
+              </a>
+            </Link>
           </li>
         </ul>
       </div>

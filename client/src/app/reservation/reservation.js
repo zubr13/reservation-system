@@ -3,6 +3,7 @@ import "./reservation.css";
 import { connect } from "react-redux";
 import { getReservations } from "./reservation.reducer";
 import { fetchReservations } from "./reservation.actions";
+import ReservationsList from "./reservations-list/reservations-list";
 
 class Reservation extends React.Component {
   componentDidMount() {
@@ -10,7 +11,7 @@ class Reservation extends React.Component {
   }
 
   render() {
-    return "My reservations";
+    return <ReservationsList reservations={this.props.reservations} />;
   }
 }
 

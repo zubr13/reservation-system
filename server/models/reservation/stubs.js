@@ -9,7 +9,7 @@ export function generateReservations() {
     const reservation1 = new Reservation({
       organizer: "Andrii Zubrytskyi",
       university:
-        "Національний технічний університет України 'Київський політехнічний інститут",
+        "Національний технічний університет України 'Київський політехнічний інститут'",
       building: "1",
       description: "Meetup about open source",
       room: "202-18",
@@ -20,7 +20,7 @@ export function generateReservations() {
     const reservation2 = new Reservation({
       organizer: "Vitalii Klichko",
       university:
-        "Національний технічний університет України 'Київський політехнічний інститут",
+        "Національний технічний університет України 'Київський політехнічний інститут'",
       building: "1",
       description: "Lection about smart city",
       room: "202-18",
