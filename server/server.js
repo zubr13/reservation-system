@@ -9,6 +9,7 @@ import lections from "./models/lections/lections.routes";
 import compression from "compression";
 import bodyParser from "body-parser";
 import path from "path";
+import helmet from "helmet";
 
 const app = new Express();
 const port = process.env.PORT || 5000;
@@ -33,6 +34,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(Express.static("client/build"));
 }
 
+app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json({ limit: "20mb" }));
 app.use(bodyParser.urlencoded({ limit: "20mb", extended: false }));
