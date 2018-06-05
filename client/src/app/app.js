@@ -14,6 +14,7 @@ import UniversityDetails from "./universities/university-details/university-deta
 import BuildingDetails from "./universities/university-details/building-details/building-details";
 import Reservation from "./reservation/reservation";
 import Contacts from "./contacts/contacts";
+import Login from "./user/login/login";
 import CreateReservation from "./reservation/create-reservation/create-reservation";
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
             <Route path="/universities" component={Universities} />
             <Route path="/reservations" component={Reservation} />
             <Route path="/contacts" component={Contacts} />
+            <Route path="/login" component={Login} />
             <Redirect to="/main" />
           </Switch>
           <Footer />

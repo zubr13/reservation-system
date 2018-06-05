@@ -40,6 +40,11 @@ class Header extends React.Component {
                 Контакти
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/login" activeClassName="active">
+                Зареєструватися/увійти
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

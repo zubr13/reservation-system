@@ -1,0 +1,10 @@
+.tab {
+  display: inline-block;
+  padding: 12px;
+}
+
+.tab.active {
+  color: #27ae61;
+  background: #eee;
+  border-radius: 4px;
+}

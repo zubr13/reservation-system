@@ -19,8 +19,7 @@ const userSchema = new Schema({
     trim: true
   },
   mobileNumber: {
-    type: String,
-    required: true
+    type: String
   },
   ocuppation: {
     type: String
