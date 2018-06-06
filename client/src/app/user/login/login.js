@@ -31,7 +31,15 @@ class Login extends React.Component {
   }
 
   onLoginUser = () => {
-    loginUser(this.user);
+    loginUser(this.user).then(() => {
+      window.location.reload();
+    });
+  };
+
+  onRegisterUser = () => {
+    registerUser(this.user).then(() => {
+      window.location.reload();
+    });
   };
 
   renderLoginForm() {
@@ -100,10 +108,7 @@ class Login extends React.Component {
         <ul className="actions">
           <li>
             <Link to="/main">
-              <a
-                className="button"
-                onClick={registerUser.bind(this, this.user)}
-              >
+              <a className="button" onClick={this.onRegisterUser}>
                 Зареєструватися
               </a>
             </Link>

@@ -3,6 +3,15 @@ import "./header.css";
 import { NavLink } from "react-router-dom";
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  logout() {
+    sessionStorage.removeItem("token");
+    window.location.reload();
+  }
+
   render() {
     return (
       <div className="header container">
@@ -41,9 +50,13 @@ class Header extends React.Component {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/login" activeClassName="active">
-                Зареєструватися/увійти
-              </NavLink>
+              {sessionStorage.getItem("token") ? (
+                <a onClick={this.logout}>Вийти</a>
+              ) : (
+                <NavLink to="/login" activeClassName="active">
+                  Зареєструватися/увійти
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>
