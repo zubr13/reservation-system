@@ -9,10 +9,8 @@ export function setCurrentUser(user) {
   };
 }
 
-export function getCurrentUer(dispatch) {
-  return dispatch => {
-    return callApi("auth/me").then(res => {
-      dispatch(setCurrentUser(res.user));
-    });
-  };
+export function getCurrentUser(dispatch) {
+  return callApi("auth/me").then(user => {
+    dispatch(setCurrentUser(user));
+  });
 }

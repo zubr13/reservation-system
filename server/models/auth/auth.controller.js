@@ -33,7 +33,8 @@ export function register(req, res) {
     email: req.body.email,
     password: hashedPassword,
     surname: "ds",
-    mobileNumber: "ds"
+    mobileNumber: "ds",
+    role: "user"
   });
 
   user.save((err, user) => {

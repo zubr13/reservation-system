@@ -1,12 +1,9 @@
 import React from "react";
 import "./header.css";
 import { NavLink } from "react-router-dom";
+import Authorization from "../user/authorization";
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   logout() {
     sessionStorage.removeItem("token");
     window.location.reload();
@@ -30,9 +27,11 @@ class Header extends React.Component {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/reservation/create" activeClassName="active">
-                Забронювати
-              </NavLink>
+              <Authorization allowedRoles={["user", "admin"]}>
+                <NavLink to="/reservation/create" activeClassName="active">
+                  Забронювати
+                </NavLink>
+              </Authorization>
             </li>
             <li>
               <NavLink to="/universities" activeClassName="active">
@@ -40,9 +39,11 @@ class Header extends React.Component {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/reservations" activeClassName="active">
-                Мої бронювання
-              </NavLink>
+              <Authorization allowedRoles={["user", "admin"]}>
+                <NavLink to="/reservations" activeClassName="active">
+                  Мої бронювання
+                </NavLink>
+              </Authorization>
             </li>
             <li>
               <NavLink to="/contacts" activeClassName="active">

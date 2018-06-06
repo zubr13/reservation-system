@@ -1,24 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
 
-export const Authorization = allowedRoles => WrappedComponent => {
-  return class WithAuthorization extends React.Component {
-    constructor(props) {
-      super(props);
+export class Authorization extends React.Component {
+  render() {
+    const user = this.props.user || {};
+    const role = user.role;
+    return this.props.allowedRoles.includes(role) ? this.props.children : null;
+  }
+}
 
-      this.state = {
-        user: {
-          name: "vcarl",
-          role: "admin"
-        }
-      };
-    }
-    render() {
-      const { role } = this.state.user;
-      if (allowedRoles.includes(role)) {
-        return <WrappedComponent {...this.props} />;
-      } else {
-        return <h1>No page for you!</h1>;
-      }
-    }
+function mapStateToProps(state) {
+  return {
+    user: state.user.currentUser
   };
-};
+}
+
+export default connect(mapStateToProps)(Authorization);

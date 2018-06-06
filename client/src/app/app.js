@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -8,6 +8,7 @@ import {
 import "./app.css";
 import Header from "./header/header";
 import Footer from "./footer/footer";
+import { connect } from "react-redux";
 import Main from "./main/main";
 import Universities from "./universities/universities";
 import UniversityDetails from "./universities/university-details/university-details";
@@ -16,11 +17,12 @@ import Reservation from "./reservation/reservation";
 import Contacts from "./contacts/contacts";
 import Login from "./user/login/login";
 import CreateReservation from "./reservation/create-reservation/create-reservation";
+import { getCurrentUser } from "./user/user.actions";
 
-class App extends Component {
-  state = {
-    response: ""
-  };
+class App extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(getCurrentUser);
+  }
 
   render() {
     return (
@@ -48,4 +50,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    user: state.user.currentUser
+  };
+}
+
+export default connect(mapStateToProps)(App);

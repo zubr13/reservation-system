@@ -9,6 +9,7 @@ class Universities extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchUniversities);
   }
+
   render() {
     return (
       <div className="page container">
