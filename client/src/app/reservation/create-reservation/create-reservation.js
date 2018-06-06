@@ -4,6 +4,7 @@ import { postReservation } from "../reservation.actions";
 import { connect } from "react-redux";
 import _ from "lodash";
 import { Link } from "react-router-dom";
+import Authorization from "../../user/authorization";
 
 class CreateReservation extends React.Component {
   constructor(props) {
@@ -45,77 +46,79 @@ class CreateReservation extends React.Component {
       this.university = this.getUniversityByPathName(this.pathName);
     }
     return (
-      <div className="featured create-reservation">
-        <div className="container">
-          <div className="title">
-            <h2>Форма для резерування</h2>
-            <span className="byline">
-              Надішліть запит на резерування та очікуйте на підтвердження
-              адміністратора
-            </span>
+      <Authorization allowedRoles={["user", "admin"]} redirect={true}>
+        <div className="featured create-reservation">
+          <div className="container">
+            <div className="title">
+              <h2>Форма для резерування</h2>
+              <span className="byline">
+                Надішліть запит на резерування та очікуйте на підтвердження
+                адміністратора
+              </span>
+            </div>
+            <form>
+              <div className="input-container">
+                <label>ПІБ організатора</label>
+                <input
+                  type="text"
+                  onChange={this.onChange.bind(this, "organizer")}
+                />
+              </div>
+              <div className="input-container">
+                <label>Університет</label>
+                <input
+                  type="text"
+                  onChange={this.onChange.bind(this, "university")}
+                  value={this.university.title}
+                />
+              </div>
+              <div className="input-container">
+                <label>Корпус</label>
+                <input
+                  type="text"
+                  onChange={this.onChange.bind(this, "building")}
+                  value={this.room.building}
+                />
+              </div>
+              <div className="input-container">
+                <label>Аудиторія</label>
+                <input
+                  type="text"
+                  onChange={this.onChange.bind(this, "room")}
+                  value={this.room["full_name"]}
+                />
+              </div>
+              <div className="input-container">
+                <label>Час початку</label>
+                <input
+                  type="datetime-local"
+                  onChange={this.onChange.bind(this, "startTime")}
+                />
+              </div>
+              <div className="input-container">
+                <label>Час закінченя</label>
+                <input
+                  type="datetime-local"
+                  onChange={this.onChange.bind(this, "endTime")}
+                />
+              </div>
+              <div className="input-container">
+                <label>Опис</label>
+                <textarea onChange={this.onChange.bind(this, "description")} />
+              </div>
+            </form>
           </div>
-          <form>
-            <div className="input-container">
-              <label>ПІБ організатора</label>
-              <input
-                type="text"
-                onChange={this.onChange.bind(this, "organizer")}
-              />
-            </div>
-            <div className="input-container">
-              <label>Університет</label>
-              <input
-                type="text"
-                onChange={this.onChange.bind(this, "university")}
-                value={this.university.title}
-              />
-            </div>
-            <div className="input-container">
-              <label>Корпус</label>
-              <input
-                type="text"
-                onChange={this.onChange.bind(this, "building")}
-                value={this.room.building}
-              />
-            </div>
-            <div className="input-container">
-              <label>Аудиторія</label>
-              <input
-                type="text"
-                onChange={this.onChange.bind(this, "room")}
-                value={this.room["full_name"]}
-              />
-            </div>
-            <div className="input-container">
-              <label>Час початку</label>
-              <input
-                type="datetime-local"
-                onChange={this.onChange.bind(this, "startTime")}
-              />
-            </div>
-            <div className="input-container">
-              <label>Час закінченя</label>
-              <input
-                type="datetime-local"
-                onChange={this.onChange.bind(this, "endTime")}
-              />
-            </div>
-            <div className="input-container">
-              <label>Опис</label>
-              <textarea onChange={this.onChange.bind(this, "description")} />
-            </div>
-          </form>
+          <ul className="actions">
+            <li>
+              <Link to="/reservations">
+                <a className="button" onClick={this.onSubmit}>
+                  Надіслати
+                </a>
+              </Link>
+            </li>
+          </ul>
         </div>
-        <ul className="actions">
-          <li>
-            <Link to="/reservations">
-              <a className="button" onClick={this.onSubmit}>
-                Надіслати
-              </a>
-            </Link>
-          </li>
-        </ul>
-      </div>
+      </Authorization>
     );
   }
 }
