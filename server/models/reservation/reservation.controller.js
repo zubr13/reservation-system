@@ -9,7 +9,21 @@ const requiredFields = [
 ];
 
 export function getReservations(req, res) {
+  if (req.query.userId) {
+    return getUserReservations(req, res);
+  }
   Reservation.find()
+    .sort("-dateAdded")
+    .exec((err, reservations) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json({ reservations });
+    });
+}
+
+function getUserReservations(req, res) {
+  Reservation.find({ organizerId: req.query.userId })
     .sort("-dateAdded")
     .exec((err, reservations) => {
       if (err) {
@@ -26,6 +40,7 @@ export function addReservation(req, res) {
 
   const reservation = new Reservation({
     organizer: req.body.organizer,
+    organizerId: req.body.organizerId,
     university: req.body.university,
     building: req.body.building,
     room: req.body.room,

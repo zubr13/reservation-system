@@ -19,7 +19,10 @@ export function addReservation(reservation) {
 
 export function postReservation(reservation) {
   return dispatch => {
-    return callApi("reservations", "post", reservation).then(res => {
+    return callApi("reservations", "post", {
+      ...reservation,
+      organizerId: JSON.parse(sessionStorage.getItem("currentUser"))["_id"]
+    }).then(res => {
       dispatch(addReservation(res.reservation));
     });
   };
@@ -27,6 +30,16 @@ export function postReservation(reservation) {
 
 export function fetchReservations(dispatch) {
   return callApi("reservations").then(res => {
+    dispatch(addReservations(res.reservations));
+  });
+}
+
+export function fetchUserReservations(dispatch) {
+  return callApi(
+    `reservations?userId=${
+      JSON.parse(sessionStorage.getItem("currentUser"))["_id"]
+    }`
+  ).then(res => {
     dispatch(addReservations(res.reservations));
   });
 }

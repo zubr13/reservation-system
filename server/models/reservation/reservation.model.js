@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const reservationSchema = new Schema({
   organizer: { type: "String", required: true },
+  organizerId: { type: "String" },
   university: { type: "String", required: true },
   building: { type: "String", required: true },
   room: { type: "String", required: true },
