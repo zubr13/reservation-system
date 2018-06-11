@@ -33,6 +33,17 @@ function getUserReservations(req, res) {
     });
 }
 
+export function getActiveReservations(req, res) {
+  Reservation.find({ status: "active" })
+    .sort("-dateAdded")
+    .exec((err, reservations) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json({ reservations });
+    });
+}
+
 export function addReservation(req, res) {
   if (!requiredFields.every(field => req.body[field])) {
     res.status(400).end();
@@ -46,7 +57,8 @@ export function addReservation(req, res) {
     room: req.body.room,
     startTime: req.body.startTime,
     endTime: req.body.endTime,
-    description: req.body.description
+    description: req.body.description,
+    status: "active"
   });
 
   reservation.save((err, saved) => {

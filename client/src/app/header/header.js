@@ -38,10 +38,7 @@ class Header extends React.Component {
             </li>
             <li>
               <Authorization allowedRoles={["admin"]}>
-                <NavLink
-                  to="/reservation-requests/active"
-                  activeClassName="active"
-                >
+                <NavLink to="/reservation-requests" activeClassName="active">
                   Заявки на бронювання
                 </NavLink>
               </Authorization>

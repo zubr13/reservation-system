@@ -1,21 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getReservations } from "../../reservation.reducer";
-import { fetchUserReservations } from "../../reservation.actions";
+import { fetchActiveReservations } from "../../reservation.actions";
+import ReservationsList from "../../reservations-list/reservations-list";
 
 class ActiveRequests extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchUserReservations);
+    this.props.dispatch(fetchActiveReservations);
   }
 
   render() {
-    return <span>Active requests</span>;
+    return <ReservationsList reservations={this.props.reservations} />;
   }
 }
 
 function mapStateToProps(state) {
   return {
-    reservations: getReservations(state)
+    reservations: state.reservations.active
   };
 }
 
