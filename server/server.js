@@ -31,6 +31,7 @@ mongoose.connect(
 
     stubs.generateReservations();
     stubs.generateUniversities();
+    stubs.generateUsers();
   }
 );
 

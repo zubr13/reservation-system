@@ -14,6 +14,7 @@ import Universities from "./universities/universities";
 import UniversityDetails from "./universities/university-details/university-details";
 import BuildingDetails from "./universities/university-details/building-details/building-details";
 import Reservation from "./reservation/reservation";
+import ReservationRequests from "./reservation/reservation-requests/reservation-requests";
 import Contacts from "./contacts/contacts";
 import Login from "./user/login/login";
 import CreateReservation from "./reservation/create-reservation/create-reservation";
@@ -39,6 +40,10 @@ class App extends React.Component {
             <Route path={"/universities/:id"} component={UniversityDetails} />
             <Route path="/universities" component={Universities} />
             <Route path="/reservations" component={Reservation} />
+            <Route
+              path="/reservation-requests"
+              component={ReservationRequests}
+            />
             <Route path="/contacts" component={Contacts} />
             <Route path="/login" component={Login} />
             <Redirect to="/main" />
