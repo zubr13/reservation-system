@@ -1,17 +1,29 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./reservations-list.css";
 import _ from "lodash";
+import { updateReservation } from "../reservation.actions";
 
 class ReservationList extends React.Component {
+  onAccept = reservation => {
+    reservation.status = "accepted";
+    this.props.onUpdate(reservation);
+  };
+
+  onReject = reservation => {
+    reservation.status = "rejected";
+    this.props.onUpdate(reservation);
+  };
+
   render() {
     if (!this.props.reservations || !_.isArray(this.props.reservations)) {
       return null;
     }
     return (
-      <ul class="reservations-list">
+      <ul className="reservations-list">
         {this.props.reservations.map(reservation => {
           return (
-            <li>
+            <li key={reservation["_id"]}>
               <h3>{reservation.description}</h3>
               <p>{reservation.organizer}</p>
               <dl>
@@ -30,6 +42,20 @@ class ReservationList extends React.Component {
                 <dt>Аудиторія: </dt>
                 <dd>{reservation.room}</dd>
               </dl>
+              <div className="reservation-accepting">
+                <div
+                  className="button"
+                  onClick={this.onAccept.bind(this, reservation)}
+                >
+                  Прийняти
+                </div>
+                <div
+                  className="button"
+                  onClick={this.onReject.bind(this, reservation)}
+                >
+                  Відхилити
+                </div>
+              </div>
             </li>
           );
         })}
@@ -38,4 +64,18 @@ class ReservationList extends React.Component {
   }
 }
 
-export default ReservationList;
+function mapStateToProps(state) {
+  return {
+    reservation: state.reservations.reservation
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onUpdate: reservation => {
+      dispatch(updateReservation(reservation));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReservationList);

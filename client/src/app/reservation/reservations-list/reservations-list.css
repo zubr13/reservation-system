@@ -4,3 +4,13 @@
   border-radius: 8px;
   margin: 10px;
 }
+
+.reservation-accepting {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.button {
+  margin: 5px;
+}

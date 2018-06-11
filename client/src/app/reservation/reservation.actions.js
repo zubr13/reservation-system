@@ -36,6 +36,18 @@ export function postReservation(reservation) {
   };
 }
 
+export function updateReservation(reservation) {
+  return dispatch => {
+    return callApi(
+      `reservations/${reservation["_id"]}`,
+      "put",
+      reservation
+    ).then(res => {
+      dispatch(addReservation(res.reservation));
+    });
+  };
+}
+
 export function fetchReservations(dispatch) {
   return callApi("reservations").then(res => {
     dispatch(addReservations(res.reservations));

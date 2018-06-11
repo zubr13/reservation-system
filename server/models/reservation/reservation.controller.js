@@ -69,4 +69,11 @@ export function addReservation(req, res) {
   });
 }
 
-export function createReervation() {}
+export function updateReservation(req, res) {
+  Reservation.findByIdAndUpdate(req.params.id, req.body, (err, reservation) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ reservation });
+  });
+}

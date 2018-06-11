@@ -18,7 +18,7 @@ const ReservationReducer = (state = initialState, action) => {
       };
     case ADD_RESERVATION:
       return {
-        data: action.reservation
+        reservation: action.reservation
       };
     default:
       return state;
