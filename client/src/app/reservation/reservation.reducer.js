@@ -1,6 +1,7 @@
 import {
   ADD_RESERVATIONS,
   ADD_ACTIVE_RESERVATIONS,
+  ADD_ACCEPTED_RESERVATIONS,
   ADD_RESERVATION
 } from "./reservation.actions";
 
@@ -15,6 +16,10 @@ const ReservationReducer = (state = initialState, action) => {
     case ADD_ACTIVE_RESERVATIONS:
       return {
         active: action.reservations
+      };
+    case ADD_ACCEPTED_RESERVATIONS:
+      return {
+        accepted: action.reservations
       };
     case ADD_RESERVATION:
       return {

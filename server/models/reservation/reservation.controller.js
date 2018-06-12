@@ -44,6 +44,28 @@ export function getActiveReservations(req, res) {
     });
 }
 
+export function getAcceptedReservations(req, res) {
+  Reservation.find({ status: "accepted" })
+    .sort("-dateAdded")
+    .exec((err, reservations) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json({ reservations });
+    });
+}
+
+export function getRejectedReservations(req, res) {
+  Reservation.find({ status: "rejected" })
+    .sort("-dateAdded")
+    .exec((err, reservations) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json({ reservations });
+    });
+}
+
 export function addReservation(req, res) {
   if (!requiredFields.every(field => req.body[field])) {
     res.status(400).end();

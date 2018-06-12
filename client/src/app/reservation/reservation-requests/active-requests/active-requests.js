@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchActiveReservations } from "../../reservation.actions";
-import ReservationsList from "../../reservations-list/reservations-list";
+import RequestsList from "../../requests-list/requests-list";
 
 class ActiveRequests extends React.Component {
   componentDidMount() {
@@ -9,7 +9,7 @@ class ActiveRequests extends React.Component {
   }
 
   render() {
-    return <ReservationsList reservations={this.props.reservations} />;
+    return <RequestsList reservations={this.props.reservations} />;
   }
 }
 

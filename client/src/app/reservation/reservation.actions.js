@@ -2,6 +2,7 @@ import callApi from "../../utils/apiService";
 
 export const ADD_RESERVATIONS = "ADD_RESERVATIONS";
 export const ADD_ACTIVE_RESERVATIONS = "ADD_ACTIVE_RESERVATIONS";
+export const ADD_ACCEPTED_RESERVATIONS = "ADD_ACCEPTED_RESERVATIONS";
 export const ADD_RESERVATION = "ADD_RESERVATION";
 
 export function addReservations(reservations) {
@@ -14,6 +15,13 @@ export function addReservations(reservations) {
 export function addActiveReservations(reservations) {
   return {
     type: ADD_ACTIVE_RESERVATIONS,
+    reservations
+  };
+}
+
+export function addAcceptedReservations(reservations) {
+  return {
+    type: ADD_ACCEPTED_RESERVATIONS,
     reservations
   };
 }
@@ -67,5 +75,11 @@ export function fetchUserReservations(dispatch) {
 export function fetchActiveReservations(dispatch) {
   return callApi("reservations/active").then(res => {
     dispatch(addActiveReservations(res.reservations));
+  });
+}
+
+export function fetchAcceptedReservations(dispatch) {
+  return callApi("reservations/accepted").then(res => {
+    dispatch(addAcceptedReservations(res.reservations));
   });
 }

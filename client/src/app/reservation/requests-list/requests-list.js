@@ -1,10 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./reservations-list.css";
+import "../reservations-list/reservations-list.css";
 import _ from "lodash";
 import { updateReservation } from "../reservation.actions";
 
-class ReservationList extends React.Component {
+class RequestsList extends React.Component {
+  onAccept = reservation => {
+    reservation.status = "accepted";
+    this.props.onUpdate(reservation);
+  };
+
+  onReject = reservation => {
+    reservation.status = "rejected";
+    this.props.onUpdate(reservation);
+  };
+
   render() {
     if (!this.props.reservations || !_.isArray(this.props.reservations)) {
       return null;
@@ -32,6 +42,20 @@ class ReservationList extends React.Component {
                 <dt>Аудиторія: </dt>
                 <dd>{reservation.room}</dd>
               </dl>
+              <div className="reservation-accepting">
+                <div
+                  className="button"
+                  onClick={this.onAccept.bind(this, reservation)}
+                >
+                  Прийняти
+                </div>
+                <div
+                  className="button"
+                  onClick={this.onReject.bind(this, reservation)}
+                >
+                  Відхилити
+                </div>
+              </div>
             </li>
           );
         })}
@@ -54,4 +78,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReservationList);
+export default connect(mapStateToProps, mapDispatchToProps)(RequestsList);
