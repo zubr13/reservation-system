@@ -4,6 +4,12 @@ import "./reservations-list.css";
 import _ from "lodash";
 import { updateReservation } from "../reservation.actions";
 
+const statusMapper = {
+  active: "Активна",
+  accepted: "Прийнята",
+  rejected: "Відхилена"
+};
+
 class ReservationList extends React.Component {
   render() {
     if (!this.props.reservations || !_.isArray(this.props.reservations)) {
@@ -14,6 +20,9 @@ class ReservationList extends React.Component {
         {this.props.reservations.map(reservation => {
           return (
             <li key={reservation["_id"]}>
+              <span className="reservation-status">
+                {statusMapper[reservation.status]}
+              </span>
               <h3>{reservation.description}</h3>
               <p>{reservation.organizer}</p>
               <dl>

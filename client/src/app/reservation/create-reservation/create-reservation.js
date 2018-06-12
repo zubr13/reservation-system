@@ -17,6 +17,8 @@ class CreateReservation extends React.Component {
   componentWillMount() {
     if (this.props.location.state) {
       this.room = this.props.location.state.room;
+      this.reservation.building = this.room.building;
+      this.reservation.room = this.room["full_name"];
       this.pathName = this.props.location.state.pathname;
       this.props.history.replace({
         pathname: this.props.location.pathname,
@@ -44,6 +46,7 @@ class CreateReservation extends React.Component {
   render() {
     if (this.pathName) {
       this.university = this.getUniversityByPathName(this.pathName);
+      this.reservation.university = this.university.title;
     }
     return (
       <Authorization allowedRoles={["user", "admin"]} redirect={true}>

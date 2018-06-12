@@ -14,3 +14,11 @@
 .button {
   margin: 5px;
 }
+
+.reservation-status {
+  float: right;
+  background: #27ae61;
+  color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+}
