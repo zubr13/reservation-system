@@ -8,6 +8,7 @@
   height: 50px;
   padding: 1em;
   border-bottom: 1px solid #27ae61;
+  z-index: 2;
 }
 
 .logo {

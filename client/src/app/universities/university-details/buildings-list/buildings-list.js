@@ -2,6 +2,7 @@ import React from "react";
 import "./buildings-list.css";
 import _ from "lodash";
 import { Link } from "react-router-dom";
+import { GoogleMapComponent } from "./google-map";
 
 class BuildingsList extends React.Component {
   render() {
@@ -23,6 +24,16 @@ class BuildingsList extends React.Component {
               return (
                 <li key={building["_id"]}>
                   <p>Корпус номер {building.name}</p>
+                  <GoogleMapComponent
+                    lat={building.latitude}
+                    lng={building.longitude}
+                    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWb3v48EWpheJjEziApCo2y37NWGFOxZ4&callback=initMap"
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={
+                      <div style={{ height: `300px`, width: "500px", border: "1px solid #27ae61", margin: "auto" }} />
+                    }
+                    mapElement={<div style={{ height: `100%` }} />}
+                  />
                   <Link
                     to={{
                       pathname: `${window.location.pathname}/buildings/${
