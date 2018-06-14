@@ -29,7 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="app-container">
           <Header />
           <Switch>
             <Route path="/main" component={Main} />

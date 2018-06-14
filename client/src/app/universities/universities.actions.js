@@ -31,6 +31,16 @@ export function fetchRoomShedule(room) {
     )
       .then(res => res.json())
       .then(lessons => {
-        dispatch(setShedule(lessons.results));
+        const requests = lessons.results.map(lesson =>
+          fetch(
+            `https://api.rozklad.hub.kpi.ua/teachers/${lesson.teachers[0]}/`
+          ).then(response => response.json())
+        );
+        return Promise.all(requests).then(teachers => {
+          lessons.results.forEach((lesson, index) => {
+            lesson.teacher = teachers[index];
+          });
+          dispatch(setShedule(lessons.results));
+        });
       });
 }
