@@ -1,6 +1,6 @@
 import callApi from "../../utils/apiService";
-
 export const ADD_UNIVERSTIES = "ADD_UNIVERSITIES";
+export const SET_SHEDULE = "SET_SHEDULE";
 
 export function addUniversities(universities) {
   return {
@@ -9,8 +9,28 @@ export function addUniversities(universities) {
   };
 }
 
+export function setShedule(shedule) {
+  return {
+    type: SET_SHEDULE,
+    shedule
+  };
+}
+
 export function fetchUniversities(dispatch) {
   return callApi("universities").then(res => {
     dispatch(addUniversities(res.universities));
   });
+}
+
+export function fetchRoomShedule(room) {
+  return dispatch =>
+    fetch(
+      `https://api.rozklad.hub.kpi.ua/lessons/?&day=${new Date().getDay()}&week=1&rooms=${
+        room.id
+      }`
+    )
+      .then(res => res.json())
+      .then(lessons => {
+        dispatch(setShedule(lessons.results));
+      });
 }

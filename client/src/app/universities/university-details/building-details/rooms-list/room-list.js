@@ -17,14 +17,24 @@ class RoomList extends React.Component {
                   <br />
                   Повне ім'я: {room["full_name"]}
                 </div>
-                <Link
-                  to={{
-                    pathname: `/reservation/create`,
-                    state: { room, pathname: window.location.pathname }
-                  }}
-                >
-                  <div className="button">Забронювати</div>
-                </Link>
+                <div class="rooms-controls">
+                  <Link
+                    to={{
+                      pathname: `/reservation/create`,
+                      state: { room, pathname: window.location.pathname }
+                    }}
+                  >
+                    <div className="button">Забронювати</div>
+                  </Link>
+                  <Link
+                    to={{
+                      pathname: `${window.location.pathname}/rooms/${room._id}`,
+                      state: { room }
+                    }}
+                  >
+                    <div className="button">Детальніше</div>
+                  </Link>
+                </div>
               </li>
             );
           })

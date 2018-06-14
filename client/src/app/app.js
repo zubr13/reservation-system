@@ -13,6 +13,7 @@ import Main from "./main/main";
 import Universities from "./universities/universities";
 import UniversityDetails from "./universities/university-details/university-details";
 import BuildingDetails from "./universities/university-details/building-details/building-details";
+import RoomDetails from "./universities/university-details/building-details/rooms-list/room-details/room-details";
 import Reservation from "./reservation/reservation";
 import ReservationRequests from "./reservation/reservation-requests/reservation-requests";
 import Contacts from "./contacts/contacts";
@@ -33,6 +34,10 @@ class App extends React.Component {
           <Switch>
             <Route path="/main" component={Main} />
             <Route path="/reservation/create" component={CreateReservation} />
+            <Route
+              path={"/universities/:id/buildings/:id/rooms/:id"}
+              component={RoomDetails}
+            />
             <Route
               path={"/universities/:id/buildings/:id"}
               component={BuildingDetails}

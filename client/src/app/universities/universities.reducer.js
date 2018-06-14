@@ -1,4 +1,4 @@
-import { ADD_UNIVERSTIES } from "./universities.actions";
+import { ADD_UNIVERSTIES, SET_SHEDULE } from "./universities.actions";
 
 const initialState = { data: [] };
 
@@ -7,6 +7,10 @@ const UniversityReducer = (state = initialState, action) => {
     case ADD_UNIVERSTIES:
       return {
         data: action.universities
+      };
+    case SET_SHEDULE:
+      return {
+        shedule: action.shedule
       };
     default:
       return state;

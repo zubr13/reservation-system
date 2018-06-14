@@ -30,7 +30,14 @@ class BuildingsList extends React.Component {
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWb3v48EWpheJjEziApCo2y37NWGFOxZ4&callback=initMap"
                     loadingElement={<div style={{ height: `100%` }} />}
                     containerElement={
-                      <div style={{ height: `300px`, width: "500px", border: "1px solid #27ae61", margin: "auto" }} />
+                      <div
+                        style={{
+                          height: `300px`,
+                          width: "500px",
+                          border: "1px solid #27ae61",
+                          margin: "auto"
+                        }}
+                      />
                     }
                     mapElement={<div style={{ height: `100%` }} />}
                   />
