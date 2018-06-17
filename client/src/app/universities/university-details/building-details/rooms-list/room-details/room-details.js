@@ -55,7 +55,7 @@ class RoomDetails extends React.Component {
       );
     }
     return (
-      <dl>
+      <dl className="rooms-list">
         {_.sortBy(lessons, "number").map(lesson => (
           <div className="lesson" key="lesson.id">
             <dt>Назва: </dt>
@@ -73,16 +73,16 @@ class RoomDetails extends React.Component {
             ) : null}
             <dt>Час початку: </dt>
             <dd>
-              {new Date(
-                lesson.startTime || timeMapper[lesson.number].startTime
-              ).toLocaleString()}
+              {lesson.startTime
+                ? new Date(lesson.startTime).toLocaleString()
+                : timeMapper[lesson.number].startTime}
             </dd>
             <br />
             <dt>Час закінчення: </dt>
             <dd>
-              {new Date(
-                lesson.endTime || timeMapper[lesson.number].endTime
-              ).toLocaleString()}
+              {lesson.endTime
+                ? new Date(lesson.endTime).toLocaleString()
+                : timeMapper[lesson.number].endTime}
             </dd>
           </div>
         ))}

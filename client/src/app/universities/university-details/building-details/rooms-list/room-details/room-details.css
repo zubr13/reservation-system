@@ -8,3 +8,7 @@
 .empty {
   padding: 2em 2em;
 }
+
+.rooms-list {
+  padding-bottom: 60px;
+}
