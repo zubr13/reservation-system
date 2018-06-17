@@ -17,6 +17,18 @@ export function generateUsers() {
       role: "admin"
     });
 
+    const admin = new User({
+      email: "admin@gmail.com",
+      name: "Супер",
+      surname: "Адміністратор",
+      mobileNumber: "+380000000000",
+      ocuppation: "Адміністратор",
+      password: bcrypt.hashSync("superadmin", 8),
+      role: "admin",
+      university:
+        "Національний технічний університет України 'Київський політехнічний інститут'"
+    });
+
     const user = new User({
       email: "user@gmail.com",
       name: "Користувач",
@@ -27,7 +39,7 @@ export function generateUsers() {
       role: "user"
     });
 
-    User.create([superadmin, user], error => {
+    User.create([superadmin, user, admin], error => {
       if (error) {
         console.log(error);
       } else {

@@ -34,7 +34,10 @@ function getUserReservations(req, res) {
 }
 
 export function getActiveReservations(req, res) {
-  Reservation.find({ status: "active" })
+  const comparator = req.query.university
+    ? { status: "active", university: req.query.university }
+    : { status: "active" };
+  Reservation.find(comparator)
     .sort("-dateAdded")
     .exec((err, reservations) => {
       if (err) {

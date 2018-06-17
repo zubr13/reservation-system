@@ -31,6 +31,9 @@ const userSchema = new Schema({
   role: {
     type: "string",
     required: true
+  },
+  university: {
+    type: "string"
   }
 });
 
