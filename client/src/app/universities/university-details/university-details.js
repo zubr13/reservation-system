@@ -7,6 +7,7 @@ import { Route, Switch } from "react-router-dom";
 import BuildingDetails from "./building-details/building-details";
 import Authorization from "../../user/authorization";
 import { Link } from "react-router-dom";
+import CreateBuilding from "./create-building/create-building";
 
 class UniversityDetails extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class UniversityDetails extends React.Component {
       <Switch>
         <Route
           path={"/universities/:id/buildings/create"}
-          component={BuildingDetails}
+          component={CreateBuilding}
         />
         <Route
           path={"/universities/:id/buildings/:id"}
