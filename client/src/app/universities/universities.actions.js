@@ -22,10 +22,10 @@ export function fetchUniversities(dispatch) {
   });
 }
 
-export function fetchRoomShedule(room) {
+export function fetchRoomShedule(room, date = new Date()) {
   return dispatch =>
     fetch(
-      `https://api.rozklad.hub.kpi.ua/lessons/?&day=${new Date().getDay()}&week=1&rooms=${
+      `https://api.rozklad.hub.kpi.ua/lessons/?&day=${date.getDay()}&week=1&rooms=${
         room.id
       }`
     )

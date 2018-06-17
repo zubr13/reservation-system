@@ -30,6 +30,7 @@ class RoomDetails extends React.Component {
   constructor(props) {
     super(props);
     this.room = {};
+    this.currentDate = new Date();
     document.documentElement.scrollTop = 0;
   }
   componentDidMount() {
@@ -42,20 +43,41 @@ class RoomDetails extends React.Component {
     this.props.dispatch(fetchRoomShedule(this.room));
   }
 
+  onDateChange = event => {
+    this.currentDate = new Date(event.target.value);
+    this.props.dispatch(fetchRoomShedule(this.room, this.currentDate));
+  };
+
   render() {
     const lessons = this.props.lessons || [];
     const reservations = this.props.reservations || {};
-    const reservedLections = reservations[this.room.full_name] || [];
+    const reservedLections =
+      _.filter(
+        reservations[this.room.full_name],
+        room =>
+          new Date(room.startTime).toDateString() ===
+          this.currentDate.toDateString()
+      ) || [];
     lessons.push(...reservedLections);
     if (_.isEmpty(lessons)) {
       return (
-        <p className="empty">
-          Розклад для цієї аудиторії на даний час відсутній
-        </p>
+        <div>
+          <div className="date-block">
+            <h3>Оберіть дату: </h3>
+            <input type="date" onChange={this.onDateChange} />
+          </div>
+          <p className="empty">
+            Розклад для цієї аудиторії на даний час відсутній
+          </p>
+        </div>
       );
     }
     return (
       <dl className="rooms-list">
+        <div className="date-block">
+          <h3>Оберіть дату: </h3>
+          <input type="date" onChange={this.onDateChange} />
+        </div>
         {_.sortBy(lessons, "number").map(lesson => (
           <div className="lesson" key="lesson.id">
             <dt>Назва: </dt>
