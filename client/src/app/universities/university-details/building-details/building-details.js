@@ -7,6 +7,11 @@ import { Route, Switch } from "react-router-dom";
 import RoomDetails from "./rooms-list/room-details/room-details";
 
 class BuildingDetails extends React.Component {
+  constructor(props) {
+    super(props);
+    document.documentElement.scrollTop = 0;
+  }
+
   render() {
     const building =
       _.find(

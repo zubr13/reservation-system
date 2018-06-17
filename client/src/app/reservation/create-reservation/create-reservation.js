@@ -29,6 +29,7 @@ class CreateReservation extends React.Component {
 
   onSubmit = () => {
     this.props.onSubmit(this.reservation);
+    document.documentElement.scrollTop = 0;
   };
 
   onChange = (propName, event) => {

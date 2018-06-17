@@ -30,6 +30,7 @@ class RoomDetails extends React.Component {
   constructor(props) {
     super(props);
     this.room = {};
+    document.documentElement.scrollTop = 0;
   }
   componentDidMount() {
     const buildings = _.flatMap(
