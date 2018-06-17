@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import BuildingsList from "./buildings-list/buildings-list";
 import { Route, Switch } from "react-router-dom";
 import BuildingDetails from "./building-details/building-details";
+import Authorization from "../../user/authorization";
+import { Link } from "react-router-dom";
 
 class UniversityDetails extends React.Component {
   constructor(props) {
@@ -19,6 +21,10 @@ class UniversityDetails extends React.Component {
       {};
     return _.isEmpty(university) ? null : (
       <Switch>
+        <Route
+          path={"/universities/:id/buildings/create"}
+          component={BuildingDetails}
+        />
         <Route
           path={"/universities/:id/buildings/:id"}
           component={BuildingDetails}
@@ -44,6 +50,11 @@ class UniversityDetails extends React.Component {
               <dd>{university.email}</dd>
             </dl>
           </div>
+          <Authorization allowedRoles={["admin"]}>
+            <Link to={`/universities/${university._id}/buildings/create`}>
+              <div className="button">Додати корпус</div>
+            </Link>
+          </Authorization>
           <BuildingsList buildings={university.buildings} />
         </div>
       </Switch>
