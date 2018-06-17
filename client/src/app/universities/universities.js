@@ -10,6 +10,8 @@ import { getUniversities } from "./universities.reducer";
 import UniversitiesList from "./universities-list/universities-list";
 import UniversityDetails from "./university-details/university-details";
 import { Route, Switch } from "react-router-dom";
+import Authorization from "../user/authorization";
+import { NavLink } from "react-router-dom";
 
 class Universities extends React.Component {
   componentDidMount() {
@@ -29,6 +31,12 @@ class Universities extends React.Component {
             <span className="byline">
               Оберіть навчальний заклад, який бажаєте забронювати
             </span>
+            <br />
+            <Authorization allowedRoles={["admin"]}>
+              <NavLink to="/reservations" activeClassName="active">
+                <div className="button">Додати університет</div>
+              </NavLink>
+            </Authorization>
           </div>
           <UniversitiesList universities={this.props.universities} />
         </div>
