@@ -5,12 +5,21 @@ export const ADD_ACTIVE_RESERVATIONS = "ADD_ACTIVE_RESERVATIONS";
 export const ADD_ACCEPTED_RESERVATIONS = "ADD_ACCEPTED_RESERVATIONS";
 export const ADD_REJECTED_RESERVATIONS = "ADD_REJECTED_RESERVATIONS";
 export const ADD_RESERVATION = "ADD_RESERVATION";
+export const REMOVE_RESERVATION = "REMOVE_RESERVATION";
 export const GROUP_RESERVATIONS_BY_ROOM = "GROUP_RESERVATIONS_BY_ROOM";
 
 export function addReservations(reservations) {
   return {
     type: ADD_RESERVATIONS,
     reservations
+  };
+}
+
+export function removeReservation(reservation, reservationType) {
+  return {
+    type: REMOVE_RESERVATION,
+    reservation,
+    reservationType
   };
 }
 

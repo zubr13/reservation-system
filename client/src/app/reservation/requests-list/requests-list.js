@@ -2,12 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import "../reservations-list/reservations-list.css";
 import _ from "lodash";
-import { updateReservation } from "../reservation.actions";
+import { updateReservation, removeReservation } from "../reservation.actions";
 
 class RequestsList extends React.Component {
   onAccept = reservation => {
     reservation.status = "accepted";
     this.props.onUpdate(reservation);
+    this.props.removeReservation(reservation, "active");
   };
 
   onReject = reservation => {
@@ -74,6 +75,9 @@ function mapDispatchToProps(dispatch) {
   return {
     onUpdate: reservation => {
       dispatch(updateReservation(reservation));
+    },
+    removeReservation: (reservation, reservationType) => {
+      dispatch(removeReservation(reservation, reservationType));
     }
   };
 }
