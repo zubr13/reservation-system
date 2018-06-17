@@ -38,7 +38,10 @@ const ReservationReducer = (state = initialState, action) => {
         reservation: action.reservation
       };
     case GROUP_RESERVATIONS_BY_ROOM:
-      const groupedReservations = _.groupBy(action.reservations, "room");
+      const groupedReservations = _.groupBy(
+        _.filter(action.reservations, ["status", "accepted"]),
+        "room"
+      );
       return {
         ...state,
         groupedReservations

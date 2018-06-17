@@ -1,14 +1,18 @@
 import React from "react";
 import _ from "lodash";
 import "./university-details.css";
+import { connect } from "react-redux";
 import BuildingsList from "./buildings-list/buildings-list";
 import { Route, Switch } from "react-router-dom";
 import BuildingDetails from "./building-details/building-details";
 
 class UniversityDetails extends React.Component {
   render() {
-    const university = _.get(this.props, "location.state.university") || {};
-    return (
+    const university =
+      _.get(this.props, "location.state.university") ||
+      _.find(this.props.universities, ["_id", this.props.match.params.id]) ||
+      {};
+    return _.isEmpty(university) ? null : (
       <Switch>
         <Route
           path={"/universities/:id/buildings/:id"}
@@ -42,4 +46,10 @@ class UniversityDetails extends React.Component {
   }
 }
 
-export default UniversityDetails;
+function mapStateToProps(state) {
+  return {
+    universities: state.universities.data
+  };
+}
+
+export default connect(mapStateToProps)(UniversityDetails);

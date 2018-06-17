@@ -79,11 +79,11 @@ export function fetchReservations(dispatch) {
 }
 
 export function fetchUserReservations(dispatch) {
-  return callApi(
-    `reservations?userId=${
-      JSON.parse(sessionStorage.getItem("currentUser"))["_id"]
-    }`
-  ).then(res => {
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+  if (!currentUser._id) {
+    return Promise.reject();
+  }
+  return callApi(`reservations?userId=${currentUser["_id"]}`).then(res => {
     dispatch(addReservations(res.reservations));
   });
 }
