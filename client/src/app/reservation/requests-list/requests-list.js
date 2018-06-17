@@ -14,6 +14,7 @@ class RequestsList extends React.Component {
   onReject = reservation => {
     reservation.status = "rejected";
     this.props.onUpdate(reservation);
+    this.props.removeReservation(reservation, "active");
   };
 
   render() {
