@@ -48,13 +48,15 @@ class RoomDetails extends React.Component {
     lessons.push(...reservedLections);
     if (_.isEmpty(lessons)) {
       return (
-        <p class="empty">Розклад для цієї аудиторії на даний час відсутній</p>
+        <p className="empty">
+          Розклад для цієї аудиторії на даний час відсутній
+        </p>
       );
     }
     return (
       <dl>
         {_.sortBy(lessons, "number").map(lesson => (
-          <div className="lesson">
+          <div className="lesson" key="lesson.id">
             <dt>Назва: </dt>
             <dd>{lesson.description || lesson.discipline_name}</dd>
             <br />
