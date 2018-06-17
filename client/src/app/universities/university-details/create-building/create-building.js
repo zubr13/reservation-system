@@ -1,6 +1,6 @@
 import React from "react";
 import "./create-building.css";
-// import { postBulding } from "../universities.actions";
+import { postBuilding } from "../../universities.actions";
 import { connect } from "react-redux";
 import _ from "lodash";
 import { Link } from "react-router-dom";
@@ -10,10 +10,18 @@ class CreateBuilding extends React.Component {
   constructor(props) {
     super(props);
     this.building = {};
+    this.university = {};
+  }
+
+  componentDidMount() {
+    this.university = _.find(this.props.universities, [
+      "_id",
+      this.props.match.params.id
+    ]);
   }
 
   onSubmit = () => {
-    this.props.onSubmit(this.building);
+    this.props.onSubmit(this.university, this.building);
     document.documentElement.scrollTop = 0;
   };
 
@@ -35,7 +43,7 @@ class CreateBuilding extends React.Component {
                 <label>Назва корпусу</label>
                 <input
                   type="text"
-                  onChange={this.onChange.bind(this, "title")}
+                  onChange={this.onChange.bind(this, "name")}
                 />
               </div>
               <div className="input-container">
@@ -56,7 +64,7 @@ class CreateBuilding extends React.Component {
           </div>
           <ul className="actions">
             <li>
-              <Link to="/universities">
+              <Link to={`/universities/${this.props.match.params.id}`}>
                 <a className="button" onClick={this.onSubmit}>
                   Надіслати
                 </a>
@@ -75,12 +83,12 @@ function mapStateToProps(state) {
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     onSubmit: building => {
-//       dispatch(postBuilding(building));
-//     }
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    onSubmit: (university, building) => {
+      dispatch(postBuilding(university, building));
+    }
+  };
+}
 
-export default connect(mapStateToProps)(CreateBuilding);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateBuilding);

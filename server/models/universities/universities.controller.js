@@ -32,20 +32,20 @@ export function addUniversity(req, res) {
 
 export function addBuilding(req, res) {
   const building = {
-    title: req.body.title,
+    name: req.body.name,
     latitude: req.body.latitude,
     longitude: req.body.longitude
   };
 
-  University.findByIdAndUpdate(
-    req.params.id,
-    { $set: { building: { $push: building } } },
-    (err, university) => {
-      console.log(university);
+  University.findById(req.params.id, (err, university) => {
+    university.buildings.push(building);
+    console.log(university);
+    university.save((err, result) => {
       if (err) {
+        console.log(err);
         res.status(500).send(err);
       }
-      res.json({ university });
-    }
-  );
+      res.json({ university: result });
+    });
+  });
 }

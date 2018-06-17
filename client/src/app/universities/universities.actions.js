@@ -1,6 +1,7 @@
 import callApi from "../../utils/apiService";
 export const ADD_UNIVERSTIES = "ADD_UNIVERSITIES";
 export const ADD_UNIVERSITY = "ADD_UNIVERSITY";
+export const ADD_BUILDING = "ADD_BUILDING";
 export const SET_SHEDULE = "SET_SHEDULE";
 
 export function addUniversities(universities) {
@@ -13,6 +14,13 @@ export function addUniversities(universities) {
 export function addUniversity(university) {
   return {
     type: ADD_UNIVERSITY,
+    university
+  };
+}
+
+export function addBuilding(university) {
+  return {
+    type: ADD_BUILDING,
     university
   };
 }
@@ -34,6 +42,18 @@ export function postUniversity(university) {
   return dispatch => {
     return callApi("universities", "post", university).then(res => {
       dispatch(addUniversity(res.university));
+    });
+  };
+}
+
+export function postBuilding(university, building) {
+  return dispatch => {
+    return callApi(
+      `universities/${university._id}/buildings`,
+      "post",
+      building
+    ).then(res => {
+      dispatch(addBuilding(res.university));
     });
   };
 }
