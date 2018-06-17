@@ -8,6 +8,8 @@ import {
 } from "../reservation/reservation.actions";
 import { getUniversities } from "./universities.reducer";
 import UniversitiesList from "./universities-list/universities-list";
+import UniversityDetails from "./university-details/university-details";
+import { Route, Switch } from "react-router-dom";
 
 class Universities extends React.Component {
   componentDidMount() {
@@ -19,15 +21,18 @@ class Universities extends React.Component {
 
   render() {
     return (
-      <div className="page container">
-        <div className="title">
-          <h2>Список університетів</h2>
-          <span className="byline">
-            Оберіть навчальний заклад, який бажаєте забронювати
-          </span>
+      <Switch>
+        <Route path={"/universities/:id"} component={UniversityDetails} />
+        <div className="page container">
+          <div className="title">
+            <h2>Список університетів</h2>
+            <span className="byline">
+              Оберіть навчальний заклад, який бажаєте забронювати
+            </span>
+          </div>
+          <UniversitiesList universities={this.props.universities} />
         </div>
-        <UniversitiesList universities={this.props.universities} />
-      </div>
+      </Switch>
     );
   }
 }

@@ -8,7 +8,7 @@ import {
 } from "./reservation.actions";
 import _ from "lodash";
 
-const initialState = { data: [] };
+const initialState = { data: [], groupedReservations: [] };
 
 const ReservationReducer = (state = initialState, action) => {
   switch (action.type) {

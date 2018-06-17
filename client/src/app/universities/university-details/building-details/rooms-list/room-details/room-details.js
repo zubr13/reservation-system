@@ -33,6 +33,10 @@ class RoomDetails extends React.Component {
 
   render() {
     const lessons = this.props.lessons || [];
+    const reservations = this.props.reservations || {};
+    const reservedLections =
+      reservations[this.props.location.state.room.full_name] || [];
+    lessons.push(...reservedLections);
     if (_.isEmpty(lessons)) {
       return (
         <p class="empty">Розклад для цієї аудиторії на даний час відсутній</p>
@@ -43,19 +47,31 @@ class RoomDetails extends React.Component {
         {_.sortBy(lessons, "number").map(lesson => (
           <div className="lesson">
             <dt>Назва: </dt>
-            <dd>{lesson.discipline_name}</dd>
+            <dd>{lesson.description || lesson.discipline_name}</dd>
             <br />
             <dt>Викладач: </dt>
-            <dd>{lesson.teacher.full_name}</dd>
+            <dd>{_.get(lesson, "teacher.full_name") || lesson.organizer}</dd>
             <br />
-            <dt>Група: </dt>
-            <dd>{lesson.groups_names[0]}</dd>
-            <br />
+            {lesson.groups_names ? (
+              <div>
+                <dt>Група: </dt>
+                <dd>{lesson.groups_names[0]}</dd>
+                <br />
+              </div>
+            ) : null}
             <dt>Час початку: </dt>
-            <dd>{timeMapper[lesson.number].startTime}</dd>
+            <dd>
+              {new Date(
+                lesson.startTime || timeMapper[lesson.number].startTime
+              ).toLocaleString()}
+            </dd>
             <br />
-            <dt>Час закінченні: </dt>
-            <dd>{timeMapper[lesson.number].endTime}</dd>
+            <dt>Час закінчення: </dt>
+            <dd>
+              {new Date(
+                lesson.endTime || timeMapper[lesson.number].endTime
+              ).toLocaleString()}
+            </dd>
           </div>
         ))}
       </dl>
@@ -65,7 +81,8 @@ class RoomDetails extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    lessons: state.universities.shedule
+    lessons: state.universities.shedule,
+    reservations: state.reservations.groupedReservations
   };
 }
 
