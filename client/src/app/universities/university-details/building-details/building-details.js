@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import _ from "lodash";
 import "./building-details.css";
 import RoomsList from "./rooms-list/room-list";
 import { Route, Switch } from "react-router-dom";
@@ -6,7 +8,11 @@ import RoomDetails from "./rooms-list/room-details/room-details";
 
 class BuildingDetails extends React.Component {
   render() {
-    const building = this.props.location.state.building || {};
+    const building =
+      _.find(
+        _.flatMap(this.props.universities, university => university.buildings),
+        ["_id", this.props.match.params.id]
+      ) || {};
     return (
       <Switch>
         <Route
@@ -19,4 +25,10 @@ class BuildingDetails extends React.Component {
   }
 }
 
-export default BuildingDetails;
+function mapStateToProps(state) {
+  return {
+    universities: state.universities.data
+  };
+}
+
+export default connect(mapStateToProps)(BuildingDetails);
