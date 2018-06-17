@@ -27,15 +27,24 @@ const timeMapper = {
   }
 };
 class RoomDetails extends React.Component {
+  constructor(props) {
+    super(props);
+    this.room = {};
+  }
   componentDidMount() {
-    this.props.dispatch(fetchRoomShedule(this.props.location.state.room));
+    const buildings = _.flatMap(
+      this.props.universities,
+      university => university.buildings
+    );
+    const rooms = _.flatMap(buildings, building => building.rooms);
+    this.room = _.find(rooms, ["_id", this.props.match.params.id]) || {};
+    this.props.dispatch(fetchRoomShedule(this.room));
   }
 
   render() {
     const lessons = this.props.lessons || [];
     const reservations = this.props.reservations || {};
-    const reservedLections =
-      reservations[this.props.location.state.room.full_name] || [];
+    const reservedLections = reservations[this.room.full_name] || [];
     lessons.push(...reservedLections);
     if (_.isEmpty(lessons)) {
       return (
@@ -82,7 +91,8 @@ class RoomDetails extends React.Component {
 function mapStateToProps(state) {
   return {
     lessons: state.universities.shedule,
-    reservations: state.reservations.groupedReservations
+    reservations: state.reservations.groupedReservations,
+    universities: state.universities.data
   };
 }
 
