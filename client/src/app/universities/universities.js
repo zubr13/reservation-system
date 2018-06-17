@@ -33,7 +33,7 @@ class Universities extends React.Component {
             </span>
             <br />
             <Authorization allowedRoles={["admin"]}>
-              <NavLink to="/reservations" activeClassName="active">
+              <NavLink to="/universities/create" activeClassName="active">
                 <div className="button">Додати університет</div>
               </NavLink>
             </Authorization>

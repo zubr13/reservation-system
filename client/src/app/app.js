@@ -16,6 +16,7 @@ import ReservationRequests from "./reservation/reservation-requests/reservation-
 import Contacts from "./contacts/contacts";
 import Login from "./user/login/login";
 import CreateReservation from "./reservation/create-reservation/create-reservation";
+import CreateUniversity from "./universities/create-university/create-university";
 import { getCurrentUser } from "./user/user.actions";
 
 class App extends React.Component {
@@ -31,6 +32,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/main" component={Main} />
             <Route path="/reservation/create" component={CreateReservation} />
+            <Route path="/universities/create" component={CreateUniversity} />
             <Route path="/universities" component={Universities} />
             <Route path="/reservations" component={Reservation} />
             <Route

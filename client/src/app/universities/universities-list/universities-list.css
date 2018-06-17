@@ -10,3 +10,7 @@
   display: inline-block;
   text-align: center;
 }
+
+.universities-list {
+  padding-bottom: 60px;
+}

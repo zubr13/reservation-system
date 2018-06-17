@@ -1,6 +1,6 @@
 import React from "react";
 import "./create-university.css";
-// import { postReservation } from "../reservation.actions";
+import { postUniversity } from "../universities.actions";
 import { connect } from "react-redux";
 import _ from "lodash";
 import { Link } from "react-router-dom";
@@ -100,12 +100,12 @@ function mapStateToProps(state) {
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     onSubmit: reservation => {
-//       dispatch(postReservation(reservation));
-//     }
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    onSubmit: university => {
+      dispatch(postUniversity(university));
+    }
+  };
+}
 
-export default connect(mapStateToProps)(CreateUniversity);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateUniversity);
