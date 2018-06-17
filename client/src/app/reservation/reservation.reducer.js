@@ -14,27 +14,33 @@ const ReservationReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_RESERVATIONS:
       return {
+        ...state,
         data: action.reservations
       };
     case ADD_ACTIVE_RESERVATIONS:
       return {
+        ...state,
         active: action.reservations
       };
     case ADD_ACCEPTED_RESERVATIONS:
       return {
+        ...state,
         accepted: action.reservations
       };
     case ADD_REJECTED_RESERVATIONS:
       return {
+        ...state,
         rejected: action.reservations
       };
     case ADD_RESERVATION:
       return {
+        ...state,
         reservation: action.reservation
       };
     case GROUP_RESERVATIONS_BY_ROOM:
       const groupedReservations = _.groupBy(action.reservations, "room");
       return {
+        ...state,
         groupedReservations
       };
     default:

@@ -7,6 +7,7 @@ const UserReducer = (state = initialState, action) => {
     case SET_CURRENT_USER:
       sessionStorage.setItem("currentUser", JSON.stringify(action.user));
       return {
+        ...state,
         currentUser: action.user
       };
     default:

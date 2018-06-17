@@ -6,10 +6,12 @@ const UniversityReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_UNIVERSTIES:
       return {
+        ...state,
         data: action.universities
       };
     case SET_SHEDULE:
       return {
+        ...state,
         shedule: action.shedule
       };
     default:
