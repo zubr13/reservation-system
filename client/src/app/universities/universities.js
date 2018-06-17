@@ -2,12 +2,19 @@ import React from "react";
 import "./universities.css";
 import { connect } from "react-redux";
 import { fetchUniversities } from "./universities.actions";
+import {
+  fetchUserReservations,
+  groupReservationsByRoom
+} from "../reservation/reservation.actions";
 import { getUniversities } from "./universities.reducer";
 import UniversitiesList from "./universities-list/universities-list";
 
 class Universities extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchUniversities);
+    this.props.dispatch(fetchUserReservations).then(() => {
+      this.props.dispatch(groupReservationsByRoom(this.props.reservations));
+    });
   }
 
   render() {
@@ -27,7 +34,8 @@ class Universities extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    universities: getUniversities(state)
+    universities: getUniversities(state),
+    reservations: state.reservations.data
   };
 }
 

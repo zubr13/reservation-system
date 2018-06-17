@@ -3,8 +3,10 @@ import {
   ADD_ACTIVE_RESERVATIONS,
   ADD_ACCEPTED_RESERVATIONS,
   ADD_REJECTED_RESERVATIONS,
-  ADD_RESERVATION
+  ADD_RESERVATION,
+  GROUP_RESERVATIONS_BY_ROOM
 } from "./reservation.actions";
+import _ from "lodash";
 
 const initialState = { data: [] };
 
@@ -29,6 +31,11 @@ const ReservationReducer = (state = initialState, action) => {
     case ADD_RESERVATION:
       return {
         reservation: action.reservation
+      };
+    case GROUP_RESERVATIONS_BY_ROOM:
+      const groupedReservations = _.groupBy(action.reservations, "room");
+      return {
+        groupedReservations
       };
     default:
       return state;

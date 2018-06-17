@@ -8,6 +8,8 @@ export function registerUser(user) {
 
 export function loginUser(user) {
   return callApi("auth/login", "post", user).then(res => {
-    sessionStorage.setItem("token", res.token);
+    if (res.token) {
+      sessionStorage.setItem("token", res.token);
+    }
   });
 }
