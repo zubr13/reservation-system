@@ -2,7 +2,6 @@ import React from "react";
 import "./create-university.css";
 import { postUniversity } from "../universities.actions";
 import { connect } from "react-redux";
-import _ from "lodash";
 import { Link } from "react-router-dom";
 import Authorization from "../../user/authorization";
 

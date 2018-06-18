@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import _ from "lodash";
 import "./building-details.css";
 import RoomsList from "./rooms-list/room-list";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import RoomDetails from "./rooms-list/room-details/room-details";
+import Authorization from "../../../user/authorization";
+import CreateRoom from "./rooms-list/create-room/create-room";
 
 class BuildingDetails extends React.Component {
   constructor(props) {
@@ -21,10 +23,21 @@ class BuildingDetails extends React.Component {
     return (
       <Switch>
         <Route
+          path={"/universities/:id/buildings/:id/rooms/create"}
+          component={CreateRoom}
+        />
+        <Route
           path={"/universities/:id/buildings/:id/rooms/:id"}
           component={RoomDetails}
         />
-        <RoomsList rooms={building.rooms} />
+        <div>
+          <Authorization allowedRoles={["admin"]}>
+            <Link to={`${this.props.match.url}/rooms/create`}>
+              <div className="button add-room">Додати аудиторію</div>
+            </Link>
+          </Authorization>
+          <RoomsList rooms={building.rooms} />
+        </div>
       </Switch>
     );
   }
