@@ -58,7 +58,10 @@ export function addRoom(req, res) {
   };
 
   University.findById(req.params.universityId, (err, university) => {
-    const building = _.find(university.buildings, req.params.buildingId);
+    const building = _.find(
+      university.buildings,
+      building => building._id.toString() === req.params.buildingId
+    );
     building.rooms.push(room);
     university.save((err, result) => {
       if (err) {

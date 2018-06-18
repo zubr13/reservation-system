@@ -58,6 +58,18 @@ export function postBuilding(university, building) {
   };
 }
 
+export function postRoom(universityId, buildingId, room) {
+  return dispatch => {
+    return callApi(
+      `universities/${universityId}/buildings/${buildingId}/rooms`,
+      "post",
+      room
+    ).then(res => {
+      dispatch(addBuilding(res.university));
+    });
+  };
+}
+
 export function fetchRoomShedule(room, date = new Date()) {
   return dispatch =>
     fetch(

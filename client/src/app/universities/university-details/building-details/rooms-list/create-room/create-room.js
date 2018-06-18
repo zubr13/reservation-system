@@ -1,6 +1,6 @@
 import React from "react";
 import "./create-room.css";
-// import { postUniversity } from "../universities.actions";
+import { postRoom } from "../../../../universities.actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Authorization from "../../../../../user/authorization";
@@ -12,7 +12,8 @@ class CreateRoom extends React.Component {
   }
 
   onSubmit = () => {
-    this.props.onSubmit(this.room);
+    const urlParts = this.props.match.url.split("/");
+    this.props.onSubmit(this.room, urlParts[2], this.props.match.params.id);
     document.documentElement.scrollTop = 0;
   };
 
@@ -60,12 +61,12 @@ function mapStateToProps(state) {
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     onSubmit: room => {
-//       dispatch(postRoom(room));
-//     }
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    onSubmit: (room, univirsityId, buildingId) => {
+      dispatch(postRoom(univirsityId, buildingId, room));
+    }
+  };
+}
 
-export default connect(mapStateToProps)(CreateRoom);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateRoom);
