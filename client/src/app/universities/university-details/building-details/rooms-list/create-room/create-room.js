@@ -22,6 +22,7 @@ class CreateRoom extends React.Component {
   };
 
   render() {
+    const urlParts = this.props.match.url.split("/");
     return (
       <Authorization allowedRoles={["admin"]} redirect={true}>
         <div className="featured create-room">
@@ -42,7 +43,11 @@ class CreateRoom extends React.Component {
           </div>
           <ul className="actions">
             <li>
-              <Link to="/universities">
+              <Link
+                to={`/universities/${urlParts[2]}/buildings/${
+                  this.props.match.params.id
+                }`}
+              >
                 <a className="button" onClick={this.onSubmit}>
                   Надіслати
                 </a>

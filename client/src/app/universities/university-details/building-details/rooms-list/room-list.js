@@ -17,7 +17,7 @@ class RoomList extends React.Component {
                   <br />
                   Повне ім'я: {room["full_name"]}
                 </div>
-                <div class="rooms-controls">
+                <div className="rooms-controls">
                   <Link
                     to={{
                       pathname: `/reservation/create`,
