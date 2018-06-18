@@ -21,7 +21,7 @@ const universitySchema = new Schema({
           name: { type: "String" },
           full_name: { type: "String" },
           kpimaps_id: { type: "String" },
-          building: { type: "Number", required: true }
+          building: { type: "Number" }
         }
       ]
     }

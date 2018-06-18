@@ -1,4 +1,5 @@
 import University from "./universities.model";
+import _ from "lodash";
 
 export function getUniversities(req, res) {
   University.find()
@@ -40,6 +41,25 @@ export function addBuilding(req, res) {
   University.findById(req.params.id, (err, university) => {
     university.buildings.push(building);
     console.log(university);
+    university.save((err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send(err);
+      }
+      res.json({ university: result });
+    });
+  });
+}
+
+export function addRoom(req, res) {
+  const room = {
+    name: req.body.name,
+    full_name: req.body.name
+  };
+
+  University.findById(req.params.universityId, (err, university) => {
+    const building = _.find(university.buildings, req.params.buildingId);
+    building.rooms.push(room);
     university.save((err, result) => {
       if (err) {
         console.log(err);
